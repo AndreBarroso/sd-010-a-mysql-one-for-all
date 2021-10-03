@@ -1,48 +1,51 @@
 # Boas vindas ao repositório do projeto One For All!
-No bloco em que se fez presente esse projeto, avancei no meu aprendizado em MySQL. Foi abordado conteúdos como JOINS, UNION, e SUBQUERIES que ṕossibilitam juntar dados relacionados de diferentes tabelas de um banco de dados.
-Também foi aprendiddo os conceitos de STORED PROCEDURES e STORED FUNCTIONS , ferramentas que nos ajudam a criar blocos de código reutilizáveis dentro do banco de dados. Por fim, vimos também como escrever TRIGGERS, que nos permite construir blocos de código que podem ser disparados automaticamente de acordo com alguma ação (inserção, atualização, remoção).
+No bloco em que se fez presente esse projeto, foi abordada a modelagem de banco de dados relacionais. Pude aprender os conceitos de relacionamentos de tabelas, como construir os diagramas de entidade-relacionamento e como modelar um banco de dados usando as Formas Normais. A uso desses conceitas na construção de um banco de dados, evita desperdícios de espaço e garante bancos mais simples de se entender e manter! 
 
-Esse projeto tinha como objetivo, desenvolver uma série de querys para executar ações nos bancos de dados **w3schools** e **hr** fornecidos utilizando os conhecimentos adquiridos no bloco.
+Esse projeto tinha como objetivo, modelar um banco de dados a partir de tabelas não normalizadas. A partir daí, desenvolver uma série de queries para executar nesse banco de dados.
 
 ---
 
+## Habilidades
 
-  * Criar condicionais no **SQL** usando **IF** e **CASE**
+ * Modelar um banco de dados
 
-  * Manipular _strings_ no **SQL**
+  * Identificar entidades , atributos e relacionamentos
+  
+  * Aplicar a 1ª, 2ª e 3ª Forma Normal
 
-  * Usar as diversas funções matemáticas do **MySQL**
+  * Criar tabelas
+  
+  * Lidar com VIEWs
 
-  * Extrair informações específicas sobre datas de uma tabela
+  * Alterar tabelas existentes
 
-  * Utilizar as funções de agregação **AVG**, **MIN**, **MAX**, **SUM** e **COUNT**
-
-  * Exibir e filtrar dados de forma agrupada com **GROUP BY** e **HAVING**
-
-  * Utilizar **INNER JOIN**, **LEFT JOIN**, **RIGHT JOIN** para combinar dados de duas ou mais tabelas
-
-  * Utilizar **SELF JOIN** para fazer join de uma tabela com ela própria
-
-  * Utilizar SUBQUERIES
-
-  * Criar queries mais eficientes através do EXISTS
-
-  * Montar blocos de código **SQL** reutilizáveis com **STORED PROCEDURES** e **STORED FUNCTIONS**
+  * Criar reações dinâmicas com TRIGGERS
 
 ---
 
 ## Instruções para executar as queries em seu próprio computador 
 
-Cada query está nomeada como desafio1..20 e segue a numeração da lista de requisitos abaixo.
+Cada query está nomeada como desafio1..11 e segue a numeração da lista de requisitos abaixo.
 
-1. Para executar as queries é necessário ter o MySQL instalado.
+1. Para executar as queries desenvolvidas nesse projeto, é necessário ter o MySQL instalado.
 Para informações sobre como instalar o MySQL [clique aqui](https://www.alura.com.br/artigos/mysql-do-download-e-instalacao-ate-sua-primeira-tabela?gclid=CjwKCAjwqeWKBhBFEiwABo_XBm8CpfHupnWmHRD1NMwJv8SBBYmkY0dqHSWa3KX6KOzLLUT5JfNh3BoCxXMQAvD_BwE).
 
-2. Com o MySQL pronto para uso, instale os bancos de dados. O códigos para a intalação de ambos estão presentes nos arquivos **w3schools.sql** e **hr.sql**. Basta copiar para o seu MySQL.
+2. Com o MySQL pronto para uso, instale o banco de dados. Nesse projeto, um dos requisitos foi a criação do banco de dados normalizado **`SpotifyClone`**.
+O código para a sua instalação está no arquivo **desafio1.sql**. Para as demais queries funcionar é necessário que esse banco de dados esteja instalado previamente. Copie e execute seu código no MySQL.
 
-3. Com os bancos de dados instalados, basta copiar a query desejada e executar no MySQL.
+3. Com o banco de dados instalado, basta copiar as demais queries desejadas e executar no MySQL.
 
 Para dúvidas, entre em contato comigo pelo email: andrefb.eng1@gmail.com .
+
+---
+
+### Pré requisito
+Para a realização desse projeto, foram utilizadas as tabelas não normalizadas abaixo:
+![Tabela não normalizada "Spotify Clone"](./images/non-normalized-tables.png)
+[Faça o download aqui](./SpotifyClone-Non-NormalizedTable.xlsx)
+
+## Requisito 0
+- Normalizar as tabelas.
 
 ---
 
@@ -50,396 +53,302 @@ Para dúvidas, entre em contato comigo pelo email: andrefb.eng1@gmail.com .
 
 Abaixo encontra-se a lista de requisitos solicitados para a elaboração do projeto.
 
-#### 1 - Exiba os países e indicando se cada um deles se encontra ou não na região formada pela Europa
+## Desafio 1
 
-Crie uma query que mostre se o país pertence ou não à região `"Europe"`.
+* Crie um banco com o nome de **`SpotifyClone`**.
 
-> Use o banco `hr` como referência 
+* Providencie as queries necessárias para criar tabelas normalizadas que atendam aos requisitos descritos na seção anterior;
 
-Seu relatório deve apresentar 02 colunas:
+* Providencie as queries necessárias para popular as tabelas de acordo com os dados listados na seção anterior;
 
-1. A primeira deve possuir o alias "**País**" e exibir o nome do país.
+* Crie um arquivo de configurações `desafio1.json`, que mapeará em qual tabela e coluna se encontram as informações necessárias para a avaliação automatizada deste desafio. As configurações devem possuir o seguinte formato:
 
-2. A segunda deve possuir o alias "**Status Inclusão**" e deve exibir `"incluído"` se o país em questão está incluso em `"Europe"`, ou `"não incluído"`, caso contrário.
+```json
+{
+  "coluna_usuario": "nome-da-coluna",
+  "tabela_que_contem_usuario": "nome-da-tabela-que-armazena-a-coluna",
+  "coluna_plano": "nome-da-coluna",
+  "tabela_que_contem_plano": "nome-da-tabela-que-armazena-a-coluna",
+  "coluna_historico_de_reproducoes": "nome-da-coluna",
+  "tabela_que_contem_historico_de_reproducoes": "nome-da-tabela-que-armazena-a-coluna",
+  "coluna_seguindo_artistas": "nome-da-coluna",
+  "tabela_que_contem_seguindo_artistas": "nome-da-tabela-que-armazena-a-coluna",
+  "coluna_artista": "nome-da-coluna",
+  "tabela_que_contem_artista": "nome-da-tabela-que-armazena-a-coluna",
+  "coluna_album": "nome-da-coluna",
+  "tabela_que_contem_album": "nome-da-tabela-que-armazena-a-coluna",
+  "coluna_cancoes": "nome-da-coluna",
+  "tabela_que_contem_cancoes": "nome-da-tabela-que-armazena-a-coluna"
+}
+```
 
-Os resultados devem estar ordenados pelo nome do país em ordem alfabética.
+Essa configuração deve ser feita baseada no seu banco de dados **após a normalização**. Ou seja, se você criou uma tabela chamada `users` que possui a coluna `name`, você substituiria `"coluna_usuario"` e `"tabela_que_contem_usuario"` da seguinte forma:
 
----
+```json
+{
+  "coluna_usuario": "name",
+  "tabela_que_contem_usuario": "users",
+  ...
+}
+```
 
-#### 2 - Exiba os cargos com seu nível de renumeração associado, com base no salário máximo do cargo
+* Salve as queries criadas no arquivo `desafio1.sql`. Seu código deverá ser similar ao seguinte:
 
-Categorize o nível de remuneração de cada cargo.
+```sql
+DROP DATABASE IF EXISTS SpotifyClone;
 
-> Use o banco `hr` como referência 
+CREATE DATABASE SpotifyClone;
 
-Seu relatório deve possuir as seguintes colunas:
+USE SpotifyClone;
 
-1. A primeira deve possuir o alias "**Cargo**" e exibir o nome do cargo.
+CREATE TABLE tabela1(
+    coluna1 tipo restricoes,
+    coluna2 tipo restricoes,
+    colunaN tipo restricoes,
+) engine = InnoDB;
 
-2. A segunda deve possuir o alias "**Nível**" e exibir o nível de remuneração do cargo com base no seu **salário máximo**, categorizando os níveis de remuneração da seguinte forma:
+CREATE TABLE tabela2(
+    coluna1 tipo restricoes,
+    coluna2 tipo restricoes,
+    colunaN tipo restricoes,
+) engine = InnoDB;
 
-    Salário máximo entre 5000 e 10000 :arrow_right: Baixo
+INSERT INTO tabela1 (coluna1, coluna2)
+VALUES
+  ('exemplo de dados 1', 'exemplo de dados A'),
+  ('exemplo de dados 2', 'exemplo de dados B'),
+  ('exemplo de dados 3', 'exemplo de dados C');
 
-    Salário máximo entre 10001 e 20000 :arrow_right: Médio
+INSERT INTO tabela2 (coluna1, coluna2)
+VALUES
+  ('exemplo de dados 1', 'exemplo de dados X'),
+  ('exemplo de dados 2', 'exemplo de dados Y');
+```
 
-    Salário máximo entre 20001 e 30000 :arrow_right: Alto
+O que será verificado:
 
-    Salário máximo acima de 30000 :arrow_right: Altíssimo
+- Será validado se os planos estão na tabela normalizada.
 
-Os resultados devem estar ordenados pelo nome do cargo em ordem alfabética.
+- Será validado se o histórico de reprodução está na tabela normalizada.
 
----
+- Será validado se as informações sobre pessoas seguindo artistas estão na tabela normalizada.
 
-#### 3 - Exiba os cargos com a diferença entre seus salários máximo e mínimo
+- Será validado se os álbuns estão na tabela normalizada.
 
-Crie uma query que exiba 02 colunas:
+- Será validado se os canções estão na tabela normalizada.
 
-> Use o banco `hr` como referência 
+- Será validado se as informações sobre pessoas usuárias estão na tabela normalizada.
 
-1. A primeira deve possuir o alias "**Cargo**" e exibir o nome do cargo.
+- Será validado se as informações sobre pessoas artistas estão na tabela normalizada.
 
-2. A segunda deve possuir o alias "**Diferença entre salários máximo e mínimo**" e exibir a diferença entre os salários máximo e mínimo para o cargo em questão.
-
-Os resultados devem estar ordenados pela diferença entre salários máximo e mínimo em ordem crescente.
-
-Em caso de empate nessa diferença os resultados devem ser ordenados pelo nome do cargo em ordem alfabética.
-
----
-
-#### 4 - Exiba a média salarial e o nível de senioridade de todas as pessoas empregadas, agrupadas pelo cargo
-
-Obtenha informações a respeito **dos salários das pessoas empregadas**.
-
-> Use o banco `hr` como referência
-
-Crie uma query que exiba 03 colunas:
-
-1. A primeira deve possuir o alias "**Cargo**" e exibir o nome do cargo.
-
-2. A segunda deve possuir o alias "**Média salarial**" e exibir a média dos salários das pessoas empregadas que possuem o cargo em questão.
-
-3. A terceira deve possuir o alias "**Senioridade**" e categorizar o nível de senioridade do cargo com base na média salarial, da seguinte forma:
-
-    Média salarial entre 2000 - 5800 :arrow_right: Júnior
-
-    Média salarial entre 5801 - 7500 :arrow_right: Pleno
-
-    Média salarial entre 7501 - 10500 :arrow_right: Sênior
-
-    Média salarial acima de 10500 :arrow_right: CEO
-
-Sempre que fizer uso da média salarial, arredonde o valor para 02 casas decimais.
-
-Os resultados devem estar ordenados pela média salarial em ordem crescente.
-
-Em caso de empate na média, os resultados devem ser ordenados pelo nome do cargo em ordem alfabética.
-
----
-
-#### 5 - Exiba os cargos com sua variação salarial e suas médias máxima e mínima mensal, considerando salários máximo e minímo como anuais
-
-⚠️ Considere os salários máximo e mínimo de um cargo como salários anuais. ⚠️
-
-> Use o banco `hr` como referência
-
-Crie uma query que exiba 04 colunas:
-
-1. A primeira deve possuir o alias "**Cargo**" e exibir o nome do cargo.
-
-2. A segunda deve possuir o alias "**Variação Salarial**" e exibir a diferença entre os salários máximo e mínimo daquele cargo.
-
-3. A terceira deve possuir o alias "**Média mínima mensal**" e exibir o salário mínimo **mensal** daquele cargo. Arredonde a média com uma precisão de duas casas decimais.
-
-4. A quarta deve possuir o alias "**Média máxima mensal**" e exibir o salário máximo **mensal** daquele cargo. Arredonde a média com uma precisão de duas casas decimais.
-
-Os resultados devem estar ordenados pela variação salarial em ordem crescente.
-
-Em caso de empate na variação, os resultados devem ser ordenados pelo nome do cargo em ordem alfabética.
+⚠️ Note que uma vez executado um teste, a sua base de dados `SpotifyClone` **será dropada**. Logo, **se atente** a salvar seu progresso nos arquivos de desafio! ⚠️
 
 ---
 
-#### 6 - Faça um relatório que mostra o histórico de cargos das pessoas empregadas
+## Desafio 2
 
-Faça um relatório que mostra o **histórico de cargos das pessoas empregadas**. 
+Crie uma `VIEW` chamada `estatisticas_musicais` que exiba três colunas:
 
-> Use o banco `hr` como referência 
+1. A primeira coluna deve exibir a quantidade total de canções. Dê a essa coluna o alias "**cancoes**".
 
-Monte uma query que exiba 04 colunas:
+2. A segunda coluna deve exibir a quantidade total de artistas e deverá ter o alias "**artistas**".
 
-1. A primeira deve possuir o alias "**Nome completo**" e exibir o **nome completo** da pessoa empregada (não se esqueça do espaço entre o nome e o sobrenome).
+3. A terceira coluna deve exibir a quantidade de álbuns e deverá ter o alias "**albuns**".
 
-2. A segunda deve possuir o alias "**Cargo**" e exibir o nome do cargo da pessoa.
+Sua `VIEW` deve retornar a seguinte informação ao ser consultada:
 
-3. A terceira deve possuir o alias "**Data de início do cargo**" e exibir a data que a pessoa iniciou o cargo.
+![Estatísticas musicais](./images/estatisticas_musicais.png)
 
-4. A quarta deve possuir o alias "**Departamento**" e mostrar o nome do departamento em que a pessoa exerceu seu cargo.
+O que será verificado:
 
-Os resultados devem estar ordenados pelo nome completo das pessoas empregadas em ordem decrescente.
-
-Em caso de empate no nome completo, ordene os resultados pelo nome do cargo em ordem alfabética.
+- Será validado se existe uma `VIEW` chamada `estatisticas_musicais` que exibe os dados corretos nas colunas **cancoes**, **artistas** e **albuns**".
 
 ---
 
-#### 7 - Faça um relatório que mostra o histórico de cargos das pessoas empregadas que iniciaram seus cargos nos meses de janeiro, fevereiro ou março
+## Desafio 3
 
-Faça um relatório que mostre o **histórico de cargos das pessoas empregadas** que iniciaram seus cargos nos meses de janeiro, fevereiro ou março.
+Crie uma `VIEW` chamada `historico_reproducao_usuarios`. Essa `VIEW` deverá ter apenas duas colunas:
 
-> Use o banco `hr` como referência
+1. A primeira coluna deve possuir o alias "**usuario**" e exibir o nome da pessoa usuária.
 
-Monte uma query que exiba 03 colunas:
+2. A segunda coluna deve possuir o alias "**nome**" e exibir o nome da canção ouvida pela pessoa com base no seu histórico de reprodução.
 
-1. A primeira deve possuir o alias "**Nome completo**" e exibir o **nome completo** da pessoa empregada em CAIXA ALTA (não se esqueça do espaço entre o nome e o sobrenome).
+Os resultados devem estar ordenados por nome da pessoa usuária em ordem alfabética e em caso de empate no nome os resultados devem ser ordenados pelo nome da canção em ordem alfabética.
 
-2. A segunda deve possuir o alias "**Data de início**" e exibir a data que a pessoa iniciou o cargo.
+Sua `VIEW` deve retornar a seguinte informação, ao ser consultada:
 
-3. A terceira deve possuir o alias "**Salário**" e exibir o salário da pessoa.
+![Histórico de reprodução das pessoas usuárias](./images/HistoricoReproducaoUsuarios.png)
 
-Os resultados devem estar ordenados pelo nome completo das pessoas empregadas em ordem alfabética.
+O que será verificado:
 
-Em caso de empate no nome completo, ordene os resultados pela data de início que a pessoa iniciou seu cargo, em ordem crescente.
+- Será validado se existe uma `VIEW` chamada `historico_reproducao_usuarios` que exibe os dados corretos nas colunas **usuario** e **nome**".
 
----
-
-#### 8 - Exibe todas as **pessoas consumidoras** cujos pedidos já foram enviados pelas empresas `"Speedy Express"` ou `"United Package"`
-
-Exiba todas as **pessoas consumidoras** cujos pedidos já foram enviados pelas empresas `"Speedy Express"` ou `"United Package"`.
-
-> Use o banco `w3schools` como referência
-
-Monte uma query que exiba 03 colunas:
-
-1. A primeira deve possuir o alias "**Nome de contato**" e exibir **o nome de contato** da pessoa consumidora.
-
-2. A segunda deve possuir o alias "**Empresa que fez o envio**" e exibir o nome da empresa que efetuou o envio do pedido.
-
-3. A terceira deve possuir o alias "**Data do pedido**" e exibir a data que o pedido foi feito.
-
-Seus resultados devem estar ordenados pelo nome de contato da pessoa consumidora em ordem alfabética.
-
-Em caso de empate no nome de contato, ordene os resultados pelo nome da empresa que fez o envio do produto em ordem alfabética.
-
-Se houver empresas com o mesmo nome, ordene os resultados pela data do pedido em ordem crescente.
+- Será validado se as colunas estão ordenadas de forma correta.
 
 ---
 
-#### 9 - Exibe todos as pessoas funcionárias que já realizaram algum pedido, mostrando também seu total de pedidos feitos
+## Desafio 4
 
-Exiba todas as pessoas funcionárias que já realizaram algum pedido e o total dos pedidos feitos.
+Crie uma `VIEW` com o nome `top_3_artistas` que deve mostrar somente as três pessoas artistas mais populares no banco `SpotifyClone`, possuindo as seguintes colunas:
 
-> Use o banco `w3schools` como referência
+1. A primeira coluna deve possuir o alias "**artista**" e exibir o nome da pessoa artista.
 
-Monte uma query que exiba 02 colunas:
+2. A segunda coluna deve ter o alias "**seguidores**" e exibir a quantidade de pessoas que estão seguindo aquela pessoa artista.
 
-1. A primeira deve possuir o alias "**Nome completo**" e exibir o nome completo da pessoa funcionária (não se esqueça do espaço entre o nome e o sobrenome).
+Seu resultado deve estar ordenado em ordem decrescente, baseando-se na quantidade de seguidores. Em caso de empate, ordene os resultados pelo nome da pessoa artista em ordem alfabética.
 
-2. A segunda deve possuir o alias "**Total de pedidos**" e exibir a quantidade total de pedidos feitos pela pessoa.
+Sua `VIEW` deve retornar a seguinte informação, ao ser consultada:
 
-Ordene seus resultados pelo total de pedidos em ordem crescente.
+![Top 3 artistas](./images/top_3_artistas.png)
 
----
+O que será verificado:
 
-#### 10 - Exibe todos os produtos que já foram pedidos, que possuem uma média de quantidade nos pedidos registrados acima de `20.00`
+- Será validado se existe uma `VIEW` chamada `top_3_artistas` que exibe os dados corretos nas colunas **artista** e **seguidores**".
 
-Exiba todos os produtos que já foram pedidos e que possuem uma média de quantidade nos pedidos registrados acima de `20.00`.
-
-> Use o banco `w3schools` como referência
-
-Monte uma query que exiba 04 colunas:
-
-1. A primeira deve possuir o alias "**Produto**" e exibir o nome do produto.
-
-2. A segunda deve possuir o alias "**Mínima**" e exibir a **quantidade mínima** que já foi pedida desse produto.
-
-3. A terceira deve possuir o alias "**Máxima**" e exibir a **quantidade máxima** que já foi pedida desse produto.
-
-4. A quarta deve deve possuir o alias "**Média**" e exibir a **média de quantidade nos pedidos** deste produto, arredondada para duas casas decimais.
-
-Os resultados devem estar ordenados pela média de quantidade nos pedidos em ordem crescente.
-
-Em caso de empate na média, os resultados devem ser ordenados pelo nome do produto em ordem alfabética.
+- Será validado se as colunas estão ordenadas de forma correta.
 
 ---
 
-#### 11 - Exibe todas as pessoas clientes **que possuem compatriotas**, mostrando a quantidade de compatriotas para cada pessoa cliente
+## Desafio 5
 
-Exiba todas as pessoas clientes **que possuem compatriotas**.
+Estamos fazendo um estudo das músicas mais tocadas e precisamos saber quais são as duas músicas mais tocadas no momento. Crie uma `VIEW` chamada `top_2_hits_do_momento` que possua duas colunas:
 
-> Use o banco `w3schools` como referência
+1. A primeira coluna deve possuir o alias "**cancao**" e exibir o nome da canção.
 
-Mostre a quantidade de compatriotas para cada pessoa cliente.
+2. A segunda coluna deve possuir o alias "**reproducoes**" e exibir a quantidade de pessoas que já escutaram a canção em questão.
 
-Suponha que haja apenas 04 clientes:
+Seu resultado deve estar ordenado em ordem decrescente, baseando-se no número de reproduções. Em caso de empate, ordene os resultados pelo nome da canção em ordem alfabética. Queremos apenas o top 2 de músicas mais tocadas.
 
-1. `Maria`, do `Brasil`.
+Sua `VIEW` deve retornar a seguinte informação, ao ser consultada:
 
-2. `João`, do `Brasil`.
+![Top 2 hits do momento](./images/top_2_hits_do_momento.png)
 
-3. `Gabriela`, do `Brasil`.
 
-4. `Alex`, da `Irlanda`.
+O que será verificado:
 
-Logo, podemos dizer que `Maria`, `João` e `Gabriela` são compatriotas entre si, haja visto que as três pessoas moram no `Brasil`. Além disso, podemos dizer que tanto `Maria` quanto `João` e `Gabriela` possuem duas pessoas compatriotas associadas. Já `Alex` não possui compatriota, haja visto que não há outras pessoas da `Irlanda`.
+- Será validado se existe uma `VIEW` chamada `top_2_hits_do_momento`, que exibe os dados corretos nas colunas **cancao** e **reproducoes**".
 
-Monte uma query que exiba 03 colunas:
-
-1. A primeira deve possuir o alias "**Nome**" e exibir **o nome de contato** da pessoa cliente.
-
-2. A segunda deve possuir o alias "**País**" e exibir o nome do país em que a pessoa reside.
-
-3. A terceira deve possuir o alias "**Número de compatriotas**" e exibir o número de pessoas que moram no mesmo país.
-
-Os resultados devem estar ordenados pelo nome de contato da pessoa cliente em ordem alfabética.
+- Será validado se as colunas estão ordenadas de forma correta.
 
 ---
 
-#### 12 - Faça um relatório que lista todas as pessoas funcionárias **que possuem o mesmo cargo**
+## Desafio 6
 
-Faça um relatório que lista todas as pessoas funcionárias **que possuem o mesmo cargo**.
+Tendo como base o valor dos planos e o plano que cada pessoa usuária cadastrada possui no banco, queremos algumas informações sobre o faturamento da empresa. Crie uma `VIEW` chamada `faturamento_atual` que deve exibir quatro dados:
 
-> Use o banco `hr` como referência
+1. A primeira coluna deve ter o alias "**faturamento_minimo**" e exibir o menor valor de plano existente para uma pessoa usuária.
 
-Suponha que haja somente 03 pessoas funcionárias, `João`, `Maria` e `Alex`, e:
+2. A segunda coluna deve ter o alias "**faturamento_maximo**" e exibir o maior valor de plano existente para uma pessoa usuária.
 
-* `João` e `Maria` possuem o mesmo cargo;
+3. A terceira coluna deve ter o alias "**faturamento_medio**" e exibir o valor médio dos planos possuídos por pessoas usuárias até o momento.
 
-* `Alex` não tem outra pessoa funcionária com o mesmo cargo.
+4. Por fim, a quarta coluna deve ter o alias "**faturamento_total**" e exibir o valor total obtido com os planos possuídos por pessuas usuárias.
 
-Logo, podemos dizer que `João` tem uma pessoa funcionária associada, `Maria`, que possui o mesmo cargo. Também podemos dizer que `Maria` tem uma pessoa funcionária associada, `João`, que possui o mesmo cargo. Já `Alex` não tem outra pessoa funcionária associada com o mesmo cargo. Portanto, seu relatório deveria ter dois resultados, um indicando que `Maria` tem uma pessoa associada `João` que possui o mesmo cargo, e o outro resultado indicando que `João` tem uma pessoa associada `Maria` que possui o mesmo cargo.
+Para cada um desses dados, por se tratarem de valores monetários, deve-se arredondar o faturamento usando apenas duas casas decimais.
 
-Monte uma query que exiba 06 colunas:
+Sua `VIEW` deve retornar a seguinte informação, ao ser consultada:
 
-1. A primeira deve possuir o alias "**Nome completo funcionário 1**" e exibir o **nome completo** da pessoa funcionária (não se esqueça do espaço entre o nome e o sobrenome).
+![Faturamento atual](./images/faturamento_atual.png)
 
-2. A segunda deve possuir o alias "**Salário funcionário 1**" e exibir o salário dessa pessoa.
+O que será verificado:
 
-3. A terceira deve possuir o alias "**Telefone funcionário 1**" e exibir o número de telefone dessa pessoa.
-
-4. A quarta deve possuir o alias "**Nome completo funcionário 2**" e exibir o **nome completo** da pessoa funcionária associada que possui o mesmo cargo (não se esqueça do espaço entre o nome e o sobrenome).
-
-5. A quinta deve possuir o alias "**Salário funcionário 2**" e exibir o salário da pessoa funcionária associada que possui o mesmo cargo.
-
-6. A sexta deve possuir o alias "**Telefone funcionário 2**" e exibir o número da pessoa funcionária associada que possui o mesmo cargo.
-
-Os resultados devem estar ordenados pela coluna "**Nome completo funcionário 1**" em ordem alfabética.
-
-Em caso de empate, os resultados devem ser ordenados pela coluna **Nome completo funcionário 2**" em ordem alfabética.
+- Será validado se existe uma `VIEW` chamada `faturamento_atual`, que exibe os dados corretos nas colunas **faturamento_minimo**, **faturamento_maximo**, **faturamento_medio** e **faturamento_total**.
 
 ---
 
-#### 13 - Exibe todos produtos **que já tiveram um pedido associado requerindo uma quantidade desse produto maior que 80**
+## Desafio 7
 
-Exiba todos os produtos **que já tiveram um pedido associado requerindo uma quantidade desse produto maior que 80**. 
+Mostre uma relação de todos os álbuns produzidos por cada pessoa artista, com a quantidade de seguidores que ela possui, de acordo com os detalhes a seguir. Para tal, crie uma `VIEW` chamada `perfil_artistas`, com as seguintes colunas:
 
-> Use o banco `w3schools` como referência
+1. A primeira coluna deve exibir o nome da pessoa artista, com o alias "**artista**".
 
-Monte uma query que exiba 02 colunas:
+2. A segunda coluna deve exibir o nome do álbum, com o alias "**album**".
 
-1. A primeira deve possuir o alias "**Produto**" e exibir o nome do produto.
+3. A terceira coluna deve exibir a quantidade de pessoas seguidoras que aquela pessoa artista possui e deve possuir o alias "**seguidores**".
 
-2. A segunda deve possuir o alias "**Preço**" e exibir o preço desse produto.
+Seus resultados devem estar ordenados de forma decrescente, baseando-se no número de pessoas seguidoras. Em caso de empate no número de pessoas, ordene os resultados pelo nome da pessoa artista em ordem alfabética e caso há artistas com o mesmo nome, ordene os resultados pelo nome do álbum alfabeticamente.
 
-Os resultados devem estar ordenados pelo nome do produto em ordem alfabética.
+Sua `VIEW` deve retornar a seguinte informação, ao ser consultada:
 
----
+![PerfilArtistas](./images/perfil_artistas.png)
 
-#### 14 - Considerando o conjunto formado pelas pessoas consumidoras e empresas fornecedoras de produtos, queremos saber quais são os cinco primeiros países distintos, em ordem alfabética, presentes nesse conjunto
+O que será verificado:
 
-Exiba os 05 primeiros países distintos dentre as pessoas consumidoras e as empresas fornecedoras, em ordem alfabética.
+- Será validado se existe uma `VIEW` chamada `perfil_artistas`, que exibe os dados corretos nas colunas **artista**, **album** e **seguidores**.
 
-> Use o banco `w3schools` como referência
-
-Monte uma query que exiba 01 coluna com o alias "**País**" contendo o nome do país.
+- Será validado se as colunas estão ordenadas de forma correta.
 
 ---
 
-#### 15 - Crie uma procedure chamada `buscar_media_por_cargo` que recebe como parâmetro o nome de um cargo e em retorno deve mostrar a média salarial de todas as pessoas que possuem esse cargo
+## Desafio 8
 
-Crie uma procedure chamada `buscar_media_por_cargo` que recebe como parâmetro o nome de um cargo e em retorno deve mostrar a média salarial de todas as pessoas que possuem esse cargo.
+Crie uma trigger chamada `trigger_usuario_delete` que deve ser disparada sempre que uma pessoa usuária for excluída do banco de dados, refletindo essa exclusão em todas as tabelas que ela estiver.
 
-Sua procedure deve retornar somente 01 coluna com o alias "**Média salarial**", que mostra a média salarial arredondada para duas casas decimais.
+Teste a funcionalidade correta de sua trigger, fazendo a exclusão da usuária `"Thati"`.
 
-> Use o banco `hr` como referência 
+O que será verificado:
 
-Confirme a execução correta da procedure chamando-a e passando o nome de cargo igual a `"Programmer"`:
-
-`CALL buscar_media_por_cargo('Programmer');`
-
-Chamando-a dessa forma, sua procedure deve retornar `5760.00` como média salarial para pessoas que ocupam o cargo `"Programmer"`.
+- Será validado se ao excluir uma pessoa usuária do banco de dados a `trigger_usuario_delete` é ativada e a ação de exclusão reflete em todas as tabelas em que esta pessoa está presente.
 
 ---
 
-#### 16 - Crie uma função chamada `buscar_quantidade_de_empregos_por_funcionario` no banco de dados `hr` que, ao receber o **email de uma pessoa funcionária**, retorne a quantidade de empregos **presentes em seu histórico**
+## Desafio 9
 
-Crie uma função chamada `buscar_quantidade_de_empregos_por_funcionario` que, ao receber o **email de uma pessoa funcionária**, retorne a quantidade de empregos **presentes em seu histórico**.
+Crie uma procedure chamada `albuns_do_artista` que recebe como parâmetro o nome de uma pessoa artista e em retorno deve exibir as seguintes colunas:
 
-> Use o banco `hr` como referência 
+1. O nome da pessoa artista, com o alias "**artista**".
 
-Confirme que sua função retorna o valor `2` ao ser chamada passando uma pessoa funcionária cujo email é `"NKOCHHAR"`.
+2. O nome do álbum, com o alias "**album**".
 
----
+Os resultados devem ser ordenados pelo nome do álbum em ordem alfabética.
 
-#### 17 - Crie uma TRIGGER que, a cada nova inserção realizada na tabela `orders`, insira automaticamente a data atual na coluna `OrderDate`
+Confirme a execução correta da procedure, chamando-a e passando o nome igual a `"Walter Phoenix"`. Sua procedure deve retornar o mesmo que o resultado abaixo:
 
-Crie uma TRIGGER que, a cada nova inserção realizada na tabela `orders`, insira automaticamente a data atual na coluna `OrderDate`.
+`CALL albuns_do_artista('Walter Phoenix');`
 
-> Use o banco `w3schools` como referência
+![Álbuns da pessoa artista](./images/AlbunsDoArtista.png)
 
-A partir disso, o avaliador vai executar dois processos:
+O que será verificado:
 
-1. Inserir na tabela `orders`um novo registro com os dados: `CustomerID` com valor 4, `EmployeeID` com valor 2 e `ShipperID` com valor 2;
+- Será validado se a procedure `albuns_do_artista` retorna a coluna **artista** contendo o nome da pessoa artista e a coluna **album** contendo o nome do album.
 
-2. Montar uma query que mostre todos os `CustomerID` igual a 4.
-
-Retomando que não é necessário incluir as queries para INSERIR e SELECIONAR, elas já vão ser executadas automaticamente pelo próprio teste.
+- Será validado se as colunas estão ordenadas de forma correta.
 
 ---
 
-## BÔNUS:
+## Desafio 10
 
-#### 18 - Faça um relatório que mostra o **histórico de cargos das pessoas empregadas**, mostrando as datas de início e de saída, assim como os anos que ela ficou nesse cargo
+Crie uma function chamada de `quantidade_musicas_no_historico` que exibe a quantidade de músicas que estão presentes atualmente no histórico de reprodução de uma pessoa usuária. Ao receber o código identificador da pessoa, exiba a quantidade de canções em seu histórico de reprodução.
 
-> Use o banco `hr` como referência
+Confirme a execução correta da function, chamando-a e passando o id para a pessoa usuária com o nome igual a `"Bill"`. Sua function deve retornar o mesmo que o resultado abaixo:
 
-Faça um relatório que mostra o **histórico de cargos das pessoas empregadas**, mostrando as datas de início e de saída, assim como os anos que ela ficou nesse cargo. Para isso, usando o banco `hr` como referência, monte uma query que exiba quatro colunas:
+![Quantidade de músicas no histórico](./images/quantidade_musicas_no_historico.png)
 
-1. A primeira coluna deve possuir o alias "**Nome completo**" e exibir o **nome completo** da pessoa empregada (não se esqueça do espaço entre o nome e o sobrenome).
 
-2. A segunda coluna deve possuir o alias "**Data de início**" e exibir a data que a pessoa iniciou o cargo, no formato brasileiro (`dd/mm/aaaa`). Ou seja, se a pessoa iniciou o cargo em questão no dia 2 de janeiro de 1990, sua data de início deveria ser `02/01/1990`.
+O que será verificado:
 
-3. A terceira coluna deve possuir o alias "**Data de rescisão**" e exibir a data que a pessoa saiu do cargo, no formato brasileiro (`dd/mm/aaaa`). Ou seja, se a pessoa saiu do cargo em questão no dia 3 de setembro de 1995, sua data de rescisão deveria ser `03/09/1995`.
-
-4. A quarta coluna deve possuir o alias "**Anos trabalhados**" e exibir, usando como base as datas de saída e entrada, os anos que a pessoa ficou no cargo em questão, arredondados para duas casas decimais.
-
-Os resultados devem estar ordenados pelo nome completo das pessoas empregadas em ordem alfabética. Em caso de empate no nome completo, ordene os resultados pelos anos trabalhados por ela no cargo em questão, em ordem crescente.
+- Será validado se a function `quantidade_musicas_no_historico`, ao receber o código identificador de uma pessoa usuária, retorna a quantidade correta de canções presentes no histórico de reprodução desta pessoa.
 
 ---
 
-#### 19 - Crie uma função chamada `exibir_quantidade_pessoas_contratadas_por_mes_e_ano` no banco de dados `hr` que, dados o mês e ano como parâmetros nessa ordem, retorna a quantidade de pessoas funcionárias **que foram contratadas** nesse mês e ano
+## Desafio 11
 
-> Use o banco `hr` como referência
+Crie uma `VIEW` chamada `cancoes_premium` que exiba o nome e a quantidade de vezes que cada canção foi tocada por pessoas usuárias do plano familiar ou universitário, de acordo com os detalhes a seguir:
 
-Crie uma função chamada `exibir_quantidade_pessoas_contratadas_por_mes_e_ano` no banco de dados `hr` que, dados o mês e ano como parâmetros nessa ordem, retorna a quantidade de pessoas funcionárias **que foram contratadas** nesse mês e ano. Confirme que sua função retorna o valor `14` ao ser chamada passando os números `6` e `1987` para mês e ano, respectivamente.
+* A primeira coluna deve exibir o nome da canção, com o alias "**nome**";
 
----
+* A segunda coluna deve exibir a quantidade de pessoas que já escutaram aquela canção, com o alias "**reproducoes**";
 
-#### 20 - Toda pessoa funcionária no banco `hr` possui um histórico completo de cargos. Logo, crie uma procedure chamada `exibir_historico_completo_por_funcionario` que, dado o e-mail de uma pessoa funcionária, retorna todos os cargos em seu histórico
+* Seus resultados devem estar agrupados pelo nome da canção e ordenados em ordem alfabética.
 
-> Use o banco `hr` como referência
+Sua `VIEW` deve retornar a seguinte informação, ao ser consultada:
 
-Toda pessoa funcionária no banco `hr` possui um histórico completo de cargos. Logo, crie uma procedure chamada `exibir_historico_completo_por_funcionario` que, dado o e-mail de uma pessoa funcionária, retorna todos os cargos em seu histórico. Sua procedure deve retornar três colunas:
+![Canções premium](./images/cancoes_premium.png)
 
-1. A primeira coluna deve possuir o alias "**Nome completo**" e exibir o **nome completo** da pessoa funcionária (não se esqueça do espaço entre o nome e o sobrenome).
+O que será verificado:
 
-2. A segunda coluna deve possuir o alias "**Departamento**" e exibir o departamento que a pessoa já fez parte.
+- Será validado se existe uma `VIEW` chamada `cancoes_premium`, que exibe os dados corretos nas colunas **nome** e **reproducoes**.
 
-3. A terceira coluna deve possuir o alias "**Cargo**" e exibir cargo que a pessoa já ocupou.
-
-Os resultados devem estar ordenados pelo nome do departamento em ordem alfabética. Em caso de empate no nome do departamento, ordene os resultados pelo nome do cargo em ordem alfabética.
-
-Confirme a execução correta da procedure, chamando-a e passando o email `"NKOCHHAR"`:
-
-`CALL exibir_historico_completo_por_funcionario('NKOCHHAR');`
-
-Chamando-a dessa forma, sua procedure deve mostrar que a pessoa funcionária `Neena Kochhar` teve dois cargos em seu histórico: um como `Accounting Manager` no departamento `Accounting` e o outro como `Public Accountant` no departamento `Accounting`, nessa ordem.
+- Será validado se as colunas estão ordenadas de forma correta.
 
 ---
